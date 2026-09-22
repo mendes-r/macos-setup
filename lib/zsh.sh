@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 set -euo pipefail
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+DIR="$(cd "$(dirname "$0")/.." && pwd)"
 source "$DIR/lib/common.sh"
 
 ZSHRC="$HOME/.zshrc"
@@ -14,7 +14,7 @@ trap 'rm -f "$missing_aliases"' EXIT
 while IFS= read -r line; do
   # only look at actual "alias name=" lines; comments/blanks pass through
   if [[ "$line" =~ ^alias[[:space:]]+([a-zA-Z0-9_.]+)= ]]; then
-    name="${BASH_REMATCH[1]}"
+    name="${match[1]}"
     if has_alias_named "$ZSHRC" "$name"; then
       skip "alias '${name}' already defined in .zshrc (kept your existing one)"
       continue

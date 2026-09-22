@@ -16,13 +16,14 @@ Bootstraps a macOS machine with:
 
 Re-run it any time — every step is idempotent.
 
-## Non-destructive by design
+## Non-destructive by design (zsh & git only)
 
-Nothing here ever overwrites or deletes an existing setting:
-
-- `~/.tmux.conf` and `~/.config/nvim` are only **symlinked** if they don't already exist. If you already have one, it's left untouched and a note is printed pointing at the bundled version in `files/` in case you want to merge manually.
 - `~/.zshrc` is only ever **appended to**, inside a marked block (`# >>> macos-setup: ... >>>`). Each alias in `files/aliases.zsh` is checked against your existing file first — if you already alias `ll`, `vi`, etc., that one is skipped and your version wins. Same for the prompt: if `vcs_info`, `starship init`, or `PROMPT_SUBST` already appears anywhere in your `.zshrc`, the bundled prompt block is skipped entirely.
 - Git aliases and config keys are only set with `git config --global` when `git config --global --get <key>` comes back empty — an existing alias or setting is never redefined.
+
+## tmux & nvim are always replaced
+
+`~/.tmux.conf` and `~/.config/nvim` are **symlinked to the bundled configs on every run**, overwriting whatever was there before. If a real file/directory (not already our symlink) exists at that path, it's first backed up to `<path>.macos-setup.bak.<timestamp>` before being replaced — so nothing is lost, but the bundled config always wins.
 
 ## Layout
 
