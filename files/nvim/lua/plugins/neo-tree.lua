@@ -5,6 +5,8 @@ return {
       filtered_items = {
         -- Show gitignored files/folders (e.g. nested repos in monorepo/workspace setups)
         hide_gitignored = false,
+        -- Show dot files (e.g. .gitignore, .env, etc.)
+        hide_dotfiles = false,
       },
     },
   },
