@@ -5,7 +5,7 @@ Bootstraps a macOS machine with:
 - **Homebrew** (installed if missing) + packages from `Brewfile` (neovim, tmux, git, fzf, bat, tree)
 - **Neovim** — a LazyVim-based config (`files/nvim`), symlinked to `~/.config/nvim`
 - **tmux** — a config (`files/tmux.conf`) with vi-style copy mode, mouse support, and a minimal status bar, symlinked to `~/.tmux.conf`
-- **zsh** — a curated alias set and a git-aware prompt (branch name shown via `vcs_info`), merged into `~/.zshrc`
+- **zsh** — a curated alias set and a git-aware prompt (branch, staged/unstaged markers, exit status and clock via `vcs_info`; the branch icon needs the bundled Nerd Font), merged into `~/.zshrc`
 - **git** — a set of common aliases (`s`, `co`, `cob`, `cm`, `hist`, ...) and sane defaults (`core.editor=nvim`, `pull.rebase=false`), applied via `git config --global`
 
 ## Usage
